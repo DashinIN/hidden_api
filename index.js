@@ -144,13 +144,13 @@ function shuffleArray(array) {
 }
 
 app.get('/group/:groupId/participant/:participantId/recipient', (req,res) => {
-    const groupId = parseInt(req.params.id)
-    const tossResult = tossResults.find(toss => toss.id === groupId)
+    const groupId = parseInt(req.params.groupId)
+    const tossResult = tossResults.find(toss => toss.groupId === groupId)
     if(!tossResult) {
         return res.status(404).json({ error: 'tossResult not found' })
     }
-    const participantId = parseInt(req.params.id)
-    const participant = tossResult.find(participant => participant.id === participantId)
+    const participantId = parseInt(req.params.participantId)
+    const participant = tossResult.find(participant => participant.participantId === participantId)
     if(!participant) {
         return res.status(404).json({ error: 'Participant not found' })
     }
